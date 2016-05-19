@@ -2,6 +2,17 @@
   'use strict';
 
   angular
-    .module('client', ['ngAnimate', 'ngCookies', 'ngSanitize', 'ngMessages', 'ngResource', 'ui.router', 'ui.bootstrap', 'toastr']);
+    .module('client', [
+      'ngAnimate',
+      'ngCookies',
+      'ngSanitize',
+      'ngMessages',
+      'ngResource',
+      'ui.router',
+      'ui.bootstrap',
+      'toastr',
+      'signupModal',
+      'client.main'
+    ]);
 
 })();

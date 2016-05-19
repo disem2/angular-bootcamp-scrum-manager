@@ -1,8 +1,8 @@
-<div class="modal">
+<div class="modal SignupPopup">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title">Register new user</h3>
+      <div class="modal-header SignupPopup_header">
+        <h3 class="modal-title">{{ title }}</h3>
       </div>
       <div class="modal-body">
         <form action="#" name="signUpForm">
@@ -11,7 +11,8 @@
           <input type="password" name="password" placeholder="New password" ng-model="vm.password">
           <input type="password" required placeholder="Confirm password" ng-model="vm.confirmPassword" ng-enter="submit($hide)">
         </form>
-        <button class="btn-blue submit">Sign Up</button>
+        <button class="btn-blue" ng-click="close('ok')">OK</button>
+        <button class="btn-blue" ng-click="close('cancel')">CANCEL</button>
       </div>
     </div>
   </div>

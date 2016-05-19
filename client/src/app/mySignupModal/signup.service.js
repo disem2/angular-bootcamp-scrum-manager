@@ -2,20 +2,23 @@
   'use strict';
 
   angular
-    .module('client')
-    .service('SignupModalService', SignupModal);
+    .module('signupModal', [])
+    .service('bcSignupModalService', SignupModal);
 
   /** @ngInject */
-  function SignupModal($http, $compile) {
+  function SignupModal($http, $compile, $rootScope, $document, $log, $q, $injector, $templateRequest, $controller) {
     var modalOptions = {};
     var templateUrl = '';
+    // var scope = $rootScope.$new();
 
-    this.open = function (options) {
-      modalOptions = options;
-      templateUrl = modalOptions.templateUrl;
+    this.open = showModal;
 
-      addModal();
-    };
+    // this.open = function (options) {
+    //   modalOptions = options;
+    //   templateUrl = modalOptions.templateUrl;
+    //
+    //   addModal();
+    // };
 
     this.getModalOptions = function () {
       return modalOptions;
@@ -23,8 +26,51 @@
     function addModal() {
       $http.get(templateUrl)
         .then(function(response){
-          document.body.html($compile(response.data)(modalOptions));
+          // $document[0].body.append($compile(response.data)(scope));
+          var div = document.createElement('div');
+          div.innerHTML = $compile(response.data)(scope);
+          $document[0].body.appendChild(div);
+          console.log($document[0].body);
         });
+    }
+    function showModal(options) {
+      var deffered = $q.defer();
+      var resolves = options.resolve || {};
+      var parentScope = options.scope || $rootScope;
+
+      var promises = _.mapValues(resolves, function (resolveFunc) {
+        return $injector.invoke(resolveFunc);
+      });
+
+
+      var resolvedInstances = null;
+
+      $q.all(promises)
+        .then(function (_resolvedInstances) {
+          resolvedInstances = _resolvedInstances;
+
+          return $q.when(
+            options.template || $templateRequest(options.templateUrl)
+          );
+        })
+        .then(function (template) {
+          var scope = parentScope.$new();
+
+          $controller(options.controller, _.assign(
+            { $scope: scope },
+            resolvedInstances
+          ));
+
+          var compiledTemplateLinker = $compile(template);
+          var element = compiledTemplateLinker(scope);
+
+          angular.element($document[0].body).append(element);
+        })
+        .catch(function (err) {
+          deffered.reject(err);
+        });
+
+      return deffered.promise;
     }
   }
 
