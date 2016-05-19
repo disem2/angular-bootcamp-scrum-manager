@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr, $uibModal) {
+  function MainController($timeout, webDevTec, toastr, $uibModal, SignupModalService) {
     var vm = this;
 
     vm.awesomeThings = [];
@@ -15,17 +15,22 @@
     vm.showToastr = showToastr;
 
     vm.openSignUp = function () {
-      var modalInstance = $uibModal.open({
-        animation: true,
-        templateUrl: 'app/components/signupModal/signup.html',
-        // controller: 'SignupController',
-        size: 'md'
+      SignupModalService.open({
+        templateUrl: 'app/mySignupModal/signup.html',
+        controller: 'SignupController'
       });
 
-      modalInstance.result.then(function () {
-      }, function () {
-        $log.info('Modal dismissed at: ' + new Date());
-      });
+      //var modalInstance = $uibModal.open({
+      //  animation: true,
+      //  templateUrl: 'app/signupModal/signup.html',
+      //   controller: 'SignupController',
+      //  size: 'md'
+      //});
+      //
+      //modalInstance.result.then(function () {
+      //}, function () {
+      //  $log.info('Modal dismissed at: ' + new Date());
+      //});
     };
 
     activate();
