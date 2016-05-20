@@ -34,7 +34,7 @@
         });
     }
     function showModal(options) {
-      var deffered = $q.defer();
+      var deferred = $q.defer();
       var resolves = options.resolve || {};
       var parentScope = options.scope || $rootScope;
 
@@ -61,16 +61,22 @@
             resolvedInstances
           ));
 
+          scope.close = function (result) {
+            deferred.resolve(result);
+            element.remove();
+            scope.$destroy();
+          };
+
           var compiledTemplateLinker = $compile(template);
           var element = compiledTemplateLinker(scope);
 
           angular.element($document[0].body).append(element);
         })
         .catch(function (err) {
-          deffered.reject(err);
+          deferred.reject(err);
         });
 
-      return deffered.promise;
+      return deferred.promise;
     }
   }
 

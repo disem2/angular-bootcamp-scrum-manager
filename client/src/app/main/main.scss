@@ -1,12 +1,30 @@
-.container {
-  .header {
-   position: relative;
+.Main {
+  position: relative;
 
-    .auth-block {
-      position: absolute;
-      right: 15px;
-      top: 10px;
-      z-index: 1000;
+  &_container {
+    &_header {
+      position: relative;
+
+      &_authBlock {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        z-index: 1000;
+      }
     }
+  }
+
+  dc-sidebar {
+    position: absolute;
+    top: 60px;
+    width: 300px;
+    height: 800px;
+    background: #c7c7c7;
+  }
+  dc-sidebar.closed {
+    left: -200px;
+  }
+  dc-sidebar.open {
+    left: 0;
   }
 }

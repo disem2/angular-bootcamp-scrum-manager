@@ -12,9 +12,11 @@
     vm.awesomeThings = [];
     vm.classAnimation = '';
     vm.creationDate = 1463506703415;
-    vm.showToastr = showToastr;
+    vm.isSidebarOpen = false;
 
-    vm.openSignUp = showSignupModal();
+    vm.showToastr = showToastr;
+    vm.openSignUp = showSignupModal;
+    vm.toggleSidebar = toggleSidebar;
 
     activate();
 
@@ -34,18 +36,18 @@
 
       bcSignupModalService.open({
         templateUrl: 'app/mySignupModal/signup.html',
-        controller: 'SignupController',
+        controller: 'SignupController as signup',
         scope: $scope,
         resolve: {
           r1: function ($timeout) {
             return  $timeout(function () {
               return 'Resolved r1';
-            }, 1000);
+            }, 100);
           },
           r2: function ($timeout) {
             return  $timeout(function () {
               return 'Resolved r2';
-            }, 1000);
+            }, 100);
           }
         }
       }).then(function (result) {
@@ -61,6 +63,10 @@
       angular.forEach(vm.awesomeThings, function(awesomeThing) {
         awesomeThing.rank = Math.random();
       });
+    }
+
+    function toggleSidebar(e) {
+      vm.isSidebarOpen = !vm.isSidebarOpen;
     }
   }
 })();
