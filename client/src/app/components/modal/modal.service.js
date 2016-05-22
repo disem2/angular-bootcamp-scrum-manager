@@ -20,6 +20,8 @@
       var resolves = options.resolve || {};
       var parentScope = options.scope || $rootScope;
 
+      templateUrl = options.templateUrl;
+
       var promises = _.mapValues(resolves, function (resolveFunc) {
         return $injector.invoke(resolveFunc);
       });
@@ -29,13 +31,14 @@
 
       $q.all(promises)
         .then(function (_resolvedInstances) {
+          var modalPromise = $templateRequest('app/components/modal/modal.html');
+          var templatePromise = options.template ||  $templateRequest(templateUrl);
+
           resolvedInstances = _resolvedInstances;
 
-          return $q.when(
-            options.template || $templateRequest(options.templateUrl)
-          );
+          return $q.all([modalPromise, templatePromise]);
         })
-        .then(function (template) {
+        .then(function (templates) {
           var scope = parentScope.$new();
 
           $controller(options.controller, _.assign(
@@ -45,14 +48,18 @@
 
           scope.close = function (result) {
             deferred.resolve(result);
-            element.remove();
+            modal.remove();
             scope.$destroy();
           };
 
-          var compiledTemplateLinker = $compile(template);
-          var element = compiledTemplateLinker(scope);
+          var compiledModalLinker = $compile(templates[0]);
+          var compiledBodyLinker = $compile(templates[1]);
+          var modal = compiledModalLinker(scope);
+          var body = compiledBodyLinker(scope);
 
-          angular.element($document[0].body).append(element);
+          modal.find('.modal-body').append(body);
+
+          angular.element($document[0].body).append(modal);
         })
         .catch(function (err) {
           deferred.reject(err);

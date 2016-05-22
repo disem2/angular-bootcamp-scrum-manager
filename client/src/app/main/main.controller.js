@@ -35,7 +35,7 @@
     function showSignupModal() {
 
       bcSignupModalService.open({
-        templateUrl: 'app/mySignupModal/signup.html',
+        templateUrl: 'app/components/signup/signup.html',
         controller: 'SignupController as signup',
         scope: $scope,
         resolve: {

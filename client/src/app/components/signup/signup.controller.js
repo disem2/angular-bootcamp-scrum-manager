@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('bootcamp.main')
+    .module('bootcamp')
     .controller('SignupController', SignupController);
 
   /** @ngInject */
