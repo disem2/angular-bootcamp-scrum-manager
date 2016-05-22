@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('client')
+    .module('bootcamp')
     .run(runBlock);
 
   /** @ngInject */

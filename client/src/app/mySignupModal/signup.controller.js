@@ -2,20 +2,25 @@
   'use strict';
 
   angular
-    .module('client.main')
+    .module('bootcamp.main')
     .controller('SignupController', SignupController);
 
   /** @ngInject */
-  function SignupController($log, r1, r2) {
+  function SignupController() {
     var vm = this;
 
     vm.title = 'Sign Up Modal';
+
+    vm.saveUser = saveUser;
 
 
     activate();
 
     function activate() {
 
+    }
+    function saveUser() {
+      console.log('SAVED');
     }
   }
 })();

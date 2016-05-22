@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('client', [
+    .module('bootcamp', [
       'ngAnimate',
       'ngCookies',
       'ngSanitize',
@@ -12,7 +12,8 @@
       'ui.bootstrap',
       'toastr',
       'signupModal',
-      'client.main'
+      'bootcamp.main',
+      'bcClickOutside'
     ]);
 
 })();

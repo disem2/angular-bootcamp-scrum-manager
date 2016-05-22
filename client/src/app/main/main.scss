@@ -13,18 +13,34 @@
       }
     }
   }
-
-  dc-sidebar {
-    position: absolute;
-    top: 60px;
+  &_sidebar {
     width: 300px;
     height: 800px;
     background: #c7c7c7;
   }
-  dc-sidebar.closed {
-    left: -200px;
+  &_sidebar.closed {
+    display: none;
   }
-  dc-sidebar.open {
-    left: 0;
+  &_sidebar.open {
+    display: block;
   }
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transition: 2s;
+}
+.sidebar.ng-hide-add {
+  left: 0;
+}
+.sidebar.ng-hide-add-active {
+  left: -300px;
+}
+.sidebar.ng-hide-remove {
+  left: -300px;
+}
+.sidebar.ng-hide-remove-active {
+  left: 0;
 }

@@ -3,7 +3,7 @@
   'use strict';
 
   angular
-    .module('client')
+    .module('bootcamp')
     .constant('malarkey', malarkey)
     .constant('moment', moment);
 

@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('client')
+    .module('bootcamp')
     .factory('githubContributor', githubContributor);
 
   /** @ngInject */

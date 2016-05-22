@@ -26,6 +26,13 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
     width: 50px;
   }
 }
+.btn-blue {
+  background: #2f4f90;
+  color: #ffffff;
+  text-transform: uppercase;
+  padding: 4px 20px;
+  display: block;
+}
 
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject

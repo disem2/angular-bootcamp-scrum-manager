@@ -1,5 +1,7 @@
-<div class="Main" ng-click="main.toggleSidebar($event)">
-  <dc-sidebar ng-class="main.isSidebarOpen ? 'open' : 'closed'"></dc-sidebar>
+<div class="Main">
+  <div class="sidebar" ng-show="main.isSidebarOpen" bc-click-outside="main.isSidebarOpen = false">
+    <dc-sidebar class="Main_sidebar"></dc-sidebar>
+  </div>
   <div class="Main_container">
     <div class="Main_container_header">
       <acme-navbar creation-date="main.creationDate"></acme-navbar>
@@ -7,7 +9,7 @@
         <button class="sign-up" ng-click="main.openSignUp()">Sign Up</button>
       </div>
     </div>
-    <button ng-click="main.toggleSidebar()"><span class="glyphicon glyphicon-align-justify"></span></button>
+    <button ng-click="main.showSidebar()"><span class="glyphicon glyphicon-align-justify"></span></button>
 
     <div class="jumbotron text-center">
       <h1>'Allo, 'Allo!</h1>

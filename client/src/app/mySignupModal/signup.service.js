@@ -6,33 +6,15 @@
     .service('bcSignupModalService', SignupModal);
 
   /** @ngInject */
-  function SignupModal($http, $compile, $rootScope, $document, $log, $q, $injector, $templateRequest, $controller) {
+  function SignupModal($http, $compile, $rootScope, $document, $q, $injector, $templateRequest, $controller) {
     var modalOptions = {};
     var templateUrl = '';
-    // var scope = $rootScope.$new();
 
     this.open = showModal;
-
-    // this.open = function (options) {
-    //   modalOptions = options;
-    //   templateUrl = modalOptions.templateUrl;
-    //
-    //   addModal();
-    // };
 
     this.getModalOptions = function () {
       return modalOptions;
     };
-    function addModal() {
-      $http.get(templateUrl)
-        .then(function(response){
-          // $document[0].body.append($compile(response.data)(scope));
-          var div = document.createElement('div');
-          div.innerHTML = $compile(response.data)(scope);
-          $document[0].body.appendChild(div);
-          console.log($document[0].body);
-        });
-    }
     function showModal(options) {
       var deferred = $q.defer();
       var resolves = options.resolve || {};

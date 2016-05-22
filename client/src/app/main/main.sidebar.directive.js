@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('client')
+    .module('bootcamp')
     .directive('dcSidebar', dcSidebar);
 
   /** @ngInject */
@@ -20,13 +20,12 @@
 
     return directive;
 
-    function linkFunc(scope, el, attr, vm) {
+    function linkFunc(scope, el, attr) {
 
     }
 
     /** @ngInject */
     function SidebarController() {
-      var vm = this;
 
       activate();
 

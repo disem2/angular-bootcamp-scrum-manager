@@ -1,3 +1,16 @@
 .SignupPopup {
   border: 1px solid #000;
+
+  &_body {
+    &_form {
+      &_inputField {
+        width: 90%;
+        margin: 10px auto 0;
+        display: block;
+      }
+    }
+    &_saveBtn {
+      margin: 20px auto 0;
+    }
+  }
 }

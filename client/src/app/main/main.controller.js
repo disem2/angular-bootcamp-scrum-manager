@@ -2,11 +2,11 @@
   'use strict';
 
   angular
-    .module('client.main', [])
+    .module('bootcamp.main', [])
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr, $uibModal, bcSignupModalService, $log, $scope) {
+  function MainController($timeout, webDevTec, toastr, bcSignupModalService, $log, $scope) {
     var vm = this;
 
     vm.awesomeThings = [];
@@ -16,7 +16,7 @@
 
     vm.showToastr = showToastr;
     vm.openSignUp = showSignupModal;
-    vm.toggleSidebar = toggleSidebar;
+    vm.showSidebar = showSidebar;
 
     activate();
 
@@ -65,12 +65,8 @@
       });
     }
 
-    function toggleSidebar(e) {
-      vm.isSidebarOpen = !vm.isSidebarOpen;
+    function showSidebar() {
+      vm.isSidebarOpen = true;
     }
   }
 })();
-//todo Make own modal like Angular UI bootstrap modal with resolve part
-//Service, Controller, Template
-
-//todo Make directive with click outside handling

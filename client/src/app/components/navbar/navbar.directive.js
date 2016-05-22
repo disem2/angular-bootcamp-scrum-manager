@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('client')
+    .module('bootcamp')
     .directive('acmeNavbar', acmeNavbar);
 
   /** @ngInject */
