@@ -1,9 +1,9 @@
 <div class="signup_body">
   <form class="signup_body_form" name="signUpForm">
-    <input type="text" name="name" required placeholder="Full name" ng-model="vm.fullName">
-    <input type="email" name="email" required placeholder="Email address" ng-model="vm.email">
-    <input type="password" name="password" placeholder="New password" ng-model="vm.password">
-    <input type="password" required placeholder="Confirm password" ng-model="vm.confirmPassword" ng-enter="submit($hide)">
+    <input type="text" name="name" required placeholder="Name" ng-model="signup.userName">
+    <input type="email" name="email" required placeholder="Email address" ng-model="signup.email">
+    <input type="password" name="password" required placeholder="New password" ng-model="signup.password">
+    <input type="password" required placeholder="Confirm password" ng-model="signup.confirmPassword">
   </form>
   <button class="btn-blue signup_body_saveBtn" ng-click="signup.saveUser('save')">SAVE</button>
 </div>

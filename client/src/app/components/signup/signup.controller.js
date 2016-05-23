@@ -2,11 +2,11 @@
   'use strict';
 
   angular
-    .module('bootcamp')
+    .module('bcSignup')
     .controller('SignupController', SignupController);
 
   /** @ngInject */
-  function SignupController() {
+  function SignupController($q, bcSignupService) {
     var vm = this;
 
     vm.title = 'Sign Up Modal';
@@ -20,7 +20,16 @@
 
     }
     function saveUser() {
-      console.log('SAVED');
+      var user = {
+        name: vm.userName,
+        email: vm.email,
+        password: vm.password
+      };
+      bcSignupService.registerUser(user).then(function (result) {
+        console.log(result);
+      }, function (err) {
+        console.log(err);
+      });
     }
   }
 })();

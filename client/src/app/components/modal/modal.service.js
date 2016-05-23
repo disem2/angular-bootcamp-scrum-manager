@@ -2,8 +2,8 @@
   'use strict';
 
   angular
-    .module('signupModal', [])
-    .service('bcSignupModalService', SignupModal);
+    .module('bcModal', [])
+    .service('bcModalService', SignupModal);
 
   /** @ngInject */
   function SignupModal($http, $compile, $rootScope, $document, $q, $injector, $templateRequest, $controller) {

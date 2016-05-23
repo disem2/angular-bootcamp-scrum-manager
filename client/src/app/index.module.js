@@ -11,9 +11,10 @@
       'ui.router',
       'ui.bootstrap',
       'toastr',
-      'signupModal',
+      'bcModal',
       'bootcamp.main',
-      'bcClickOutside'
+      'bcClickOutside',
+      'bcSignup'
     ]);
 
 })();

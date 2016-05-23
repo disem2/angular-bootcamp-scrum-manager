@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr, bcSignupModalService, $log, $scope) {
+  function MainController($timeout, webDevTec, toastr, bcModalService, $log, $scope) {
     var vm = this;
 
     vm.awesomeThings = [];
@@ -34,7 +34,7 @@
 
     function showSignupModal() {
 
-      bcSignupModalService.open({
+      bcModalService.open({
         templateUrl: 'app/components/signup/signup.html',
         controller: 'SignupController as signup',
         scope: $scope,
