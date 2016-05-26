@@ -1,0 +1,12 @@
+.signin_body {
+  &_form {
+    input {
+      width: 90%;
+      margin: 10px auto 0;
+      display: block;
+    }
+  }
+  &_loginBtn {
+    margin: 20px auto 0;
+  }
+}

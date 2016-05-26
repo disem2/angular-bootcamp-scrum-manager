@@ -14,7 +14,8 @@
       'bcModal',
       'bootcamp.main',
       'bcClickOutside',
-      'bcSignup'
+      'bcAuth',
+      'bcClock'
     ]);
 
 })();

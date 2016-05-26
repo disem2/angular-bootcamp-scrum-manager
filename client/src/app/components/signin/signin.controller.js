@@ -3,10 +3,10 @@
 
   angular
     .module('bcAuth')
-    .controller('SignupController', SignupController);
+    .controller('SigninController', SignupController);
 
   /** @ngInject */
-  function SignupController($q, bcAuthService) {
+  function SignupController($q, bcSignupService) {
     var vm = this;
 
     vm.title = 'Sign Up Modal';
@@ -19,13 +19,13 @@
     function activate() {
 
     }
-    function saveUser() {
+    function login() {
       var user = {
         name: vm.userName,
         email: vm.email,
         password: vm.password
       };
-      bcAuthService.registerUser(user).then(function (result) {
+      bcSignupService.registerUser(user).then(function (result) {
         console.log(result);
       }, function (err) {
         console.log(err);

@@ -16,6 +16,7 @@
 
     vm.showToastr = showToastr;
     vm.openSignUp = showSignupModal;
+    vm.openSignUp = showSigninModal();
     vm.showSidebar = showSidebar;
 
     activate();
@@ -33,6 +34,31 @@
     }
 
     function showSignupModal() {
+
+      bcModalService.open({
+        templateUrl: 'app/components/signup/signup.html',
+        controller: 'SignupController as signup',
+        scope: $scope,
+        resolve: {
+          r1: function ($timeout) {
+            return  $timeout(function () {
+              return 'Resolved r1';
+            }, 100);
+          },
+          r2: function ($timeout) {
+            return  $timeout(function () {
+              return 'Resolved r2';
+            }, 100);
+          }
+        }
+      }).then(function (result) {
+        $log.log(result);
+      }).catch(function (err) {
+        $log.log(err);
+      });
+    }
+
+    function showSigninModal() {
 
       bcModalService.open({
         templateUrl: 'app/components/signup/signup.html',
