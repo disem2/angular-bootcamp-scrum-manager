@@ -30,5 +30,3 @@
     }
   }
 })();
-//todo Make own modal like Angular UI bootstrap modal with resolve part
-//Service, Controller, Template

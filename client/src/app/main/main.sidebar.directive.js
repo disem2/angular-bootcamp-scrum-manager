@@ -3,10 +3,10 @@
 
   angular
     .module('bootcamp')
-    .directive('dcSidebar', dcSidebar);
+    .directive('dcSidebar', ['$log', dcSidebar]);
 
   /** @ngInject */
-  function dcSidebar() {
+  function dcSidebar($log) {
     var directive = {
       restrict: 'E',
       scope: {
@@ -21,7 +21,9 @@
     return directive;
 
     function linkFunc(scope, el, attr) {
-
+      $log.log(scope);
+      $log.log(el);
+      $log.log(attr);
     }
 
     /** @ngInject */

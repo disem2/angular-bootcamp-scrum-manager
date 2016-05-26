@@ -3,15 +3,15 @@
 
   angular
     .module('bcAuth')
-    .controller('SigninController', SignupController);
+    .controller('SigninController', SigninController);
 
   /** @ngInject */
-  function SignupController($q, bcSignupService) {
+  function SigninController($q, bcAuthService) {
     var vm = this;
 
     vm.title = 'Sign Up Modal';
 
-    vm.saveUser = saveUser;
+    vm.login = login;
 
 
     activate();
@@ -21,11 +21,10 @@
     }
     function login() {
       var user = {
-        name: vm.userName,
         email: vm.email,
         password: vm.password
       };
-      bcSignupService.registerUser(user).then(function (result) {
+      bcAuthService.logIn(user).then(function (result) {
         console.log(result);
       }, function (err) {
         console.log(err);
@@ -33,5 +32,3 @@
     }
   }
 })();
-//todo Make own modal like Angular UI bootstrap modal with resolve part
-//Service, Controller, Template
