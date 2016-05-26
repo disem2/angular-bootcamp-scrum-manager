@@ -11,9 +11,6 @@
 
     vm.title = 'Sign Up Modal';
 
-    vm.saveUser = saveUser;
-
-
     activate();
 
     function activate() {

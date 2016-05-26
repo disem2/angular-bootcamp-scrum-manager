@@ -6,7 +6,7 @@
     .service('bcModalService', SignupModal);
 
   /** @ngInject */
-  function SignupModal($http, $compile, $rootScope, $document, $q, $injector, $templateRequest, $controller) {
+  function SignupModal($compile, $rootScope, $document, $q, $injector, $templateRequest, $controller) {
     var modalOptions = {};
     var templateUrl = '';
 
@@ -15,6 +15,7 @@
     this.getModalOptions = function () {
       return modalOptions;
     };
+
     function showModal(options) {
       var deferred = $q.defer();
       var resolves = options.resolve || {};
@@ -28,11 +29,14 @@
 
 
       var resolvedInstances = null;
+      var modalTitle = 'Modal Title';
 
+      //Promise for resolves
       $q.all(promises)
         .then(function (_resolvedInstances) {
           var modalPromise = $templateRequest('app/components/modal/modal.html');
           var templatePromise = options.template ||  $templateRequest(templateUrl);
+          modalTitle = options.title || modalTitle;
 
           resolvedInstances = _resolvedInstances;
 
@@ -40,7 +44,9 @@
         })
         .then(function (templates) {
           var scope = parentScope.$new();
+          scope.title = modalTitle;
 
+          //Adding controller
           $controller(options.controller, _.assign(
             { $scope: scope },
             resolvedInstances
@@ -52,6 +58,7 @@
             scope.$destroy();
           };
 
+          //Compiling templates and adding modal to body
           var compiledModalLinker = $compile(templates[0]);
           var compiledBodyLinker = $compile(templates[1]);
           var modal = compiledModalLinker(scope);
